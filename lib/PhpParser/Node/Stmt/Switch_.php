@@ -35,5 +35,6 @@ class Switch_ extends Node\Stmt implements IStatementExtractable
         foreach($this->cases as $case) {
             $casesStmts[] = $case->getStatements();
         }
+        return $casesStmts;
     }
 }
