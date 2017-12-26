@@ -3,8 +3,9 @@
 namespace PhpParser\Node\Stmt;
 
 use PhpParser\Node;
+use PhpParser\Skripsi\IStatementExtractable;
 
-class If_ extends Node\Stmt
+class If_ extends Node\Stmt implements IStatementExtractable
 {
     /** @var Node\Expr Condition expression */
     public $cond;
@@ -35,5 +36,17 @@ class If_ extends Node\Stmt
 
     public function getSubNodeNames() {
         return array('cond', 'stmts', 'elseifs', 'else');
+    }
+
+    public function getStatements()
+    {
+        $stmts = array();
+        $stmts['stmts'] = $this->stmts;
+        $stmts['elseifs'] = array();
+        foreach($this->elseifs as $elseif) {
+            $stmts['elseifs'][] = $elseif->getStatements();
+        }
+        $stmts['else'] = $this->else === null ? null : $this->else->getStatements();
+        return $stmts;
     }
 }
