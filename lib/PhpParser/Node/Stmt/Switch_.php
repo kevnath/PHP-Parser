@@ -3,8 +3,9 @@
 namespace PhpParser\Node\Stmt;
 
 use PhpParser\Node;
+use PhpParser\Skripsi\IStatementExtractable;
 
-class Switch_ extends Node\Stmt
+class Switch_ extends Node\Stmt implements IStatementExtractable
 {
     /** @var Node\Expr Condition */
     public $cond;
@@ -26,5 +27,13 @@ class Switch_ extends Node\Stmt
 
     public function getSubNodeNames() {
         return array('cond', 'cases');
+    }
+
+    public function getStatements()
+    {
+        $casesStmts = array();
+        foreach($this->cases as $case) {
+            $casesStmts[] = $case->getStatements();
+        }
     }
 }
