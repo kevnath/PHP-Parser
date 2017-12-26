@@ -3,8 +3,9 @@
 namespace PhpParser\Node\Stmt;
 
 use PhpParser\Node;
+use PhpParser\Skripsi\IStatementExtractable;
 
-class Foreach_ extends Node\Stmt
+class Foreach_ extends Node\Stmt implements IStatementExtractable
 {
     /** @var Node\Expr Expression to iterate */
     public $expr;
@@ -39,5 +40,10 @@ class Foreach_ extends Node\Stmt
 
     public function getSubNodeNames() {
         return array('expr', 'keyVar', 'byRef', 'valueVar', 'stmts');
+    }
+
+    public function getStatements()
+    {
+        return $this->stmts;
     }
 }

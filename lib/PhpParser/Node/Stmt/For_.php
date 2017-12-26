@@ -3,8 +3,9 @@
 namespace PhpParser\Node\Stmt;
 
 use PhpParser\Node;
+use PhpParser\Skripsi\IStatementExtractable;
 
-class For_ extends Node\Stmt
+class For_ extends Node\Stmt implements IStatementExtractable
 {
     /** @var Node\Expr[] Init expressions */
     public $init;
@@ -35,5 +36,10 @@ class For_ extends Node\Stmt
 
     public function getSubNodeNames() {
         return array('init', 'cond', 'loop', 'stmts');
+    }
+
+    public function getStatements()
+    {
+        return $this->stmts;
     }
 }
