@@ -4,8 +4,9 @@ namespace PhpParser\Node\Stmt;
 
 use PhpParser\Node;
 use PhpParser\Node\FunctionLike;
+use PhpParser\Skripsi\IStatementExtractable;
 
-class ClassMethod extends Node\Stmt implements FunctionLike
+class ClassMethod extends Node\Stmt implements FunctionLike, IStatementExtractable
 {
     /** @var int Flags */
     public $flags;
@@ -90,5 +91,10 @@ class ClassMethod extends Node\Stmt implements FunctionLike
 
     public function isStatic() {
         return (bool) ($this->flags & Class_::MODIFIER_STATIC);
+    }
+
+    public function getStatements()
+    {
+        return $this->stmts;
     }
 }

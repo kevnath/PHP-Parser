@@ -4,8 +4,9 @@ namespace PhpParser\Node\Stmt;
 
 use PhpParser\Node;
 use PhpParser\Node\FunctionLike;
+use PhpParser\Skripsi\IStatementExtractable;
 
-class Function_ extends Node\Stmt implements FunctionLike
+class Function_ extends Node\Stmt implements FunctionLike, IStatementExtractable
 {
     /** @var bool Whether function returns by reference */
     public $byRef;
@@ -55,6 +56,11 @@ class Function_ extends Node\Stmt implements FunctionLike
     }
 
     public function getStmts() {
+        return $this->stmts;
+    }
+
+    public function getStatements()
+    {
         return $this->stmts;
     }
 }

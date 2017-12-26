@@ -4,8 +4,9 @@ namespace PhpParser\Node\Stmt;
 
 use PhpParser\Error;
 use PhpParser\Node;
+use PhpParser\Skripsi\IStatementExtractable;
 
-class Class_ extends ClassLike
+class Class_ extends ClassLike implements IStatementExtractable
 {
     const MODIFIER_PUBLIC    =  1;
     const MODIFIER_PROTECTED =  2;
@@ -95,5 +96,15 @@ class Class_ extends ClassLike
         if ($a & 48 && $b & 48) {
             throw new Error('Cannot use the final modifier on an abstract class member');
         }
+    }
+
+    public function getStatements()
+    {
+        $stmts = array();
+        foreach($this->stmts as $stmt) {
+            if($stmt instanceof IStatementExtractable)
+                $stmts[] = $stmt->getStatements();
+        }
+        return $stmts;
     }
 }
