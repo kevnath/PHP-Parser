@@ -4,8 +4,9 @@ namespace PhpParser\Node\Expr;
 
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
+use PhpParser\Skripsi\IExtractable;
 
-class MethodCall extends Expr
+class MethodCall extends Expr implements IExtractable
 {
     /** @var Expr Variable holding object */
     public $var;
@@ -31,5 +32,31 @@ class MethodCall extends Expr
 
     public function getSubNodeNames() {
         return array('var', 'name', 'args');
+    }
+
+    private function extractName() {
+        $name = $this->name;
+        if(!is_scalar($name)) {
+            return $name->extract();
+        }
+        return $name;
+    }
+
+    private function extractArgs() {
+        $args = [];
+        foreach($this->args as $arg) {
+            $args[] = $arg->extract();
+        }
+        return $args;
+    }
+
+    public function extract()
+    {
+        return [
+            'type' => $this->getType(),
+            'var' => $this->var->extract(),
+            'name' => $this->extractName(),
+            'args' => $this->extractArgs()
+        ];
     }
 }

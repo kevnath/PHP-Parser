@@ -1,0 +1,3 @@
+<?php
+
+$obj->met('aaa');

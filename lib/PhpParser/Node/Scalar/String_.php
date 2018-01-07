@@ -154,6 +154,9 @@ class String_ extends Scalar implements IExtractable
 
     public function extract()
     {
-        return $this->value;
+        return [
+            'type' => $this->getType(),
+            'value' => $this->value
+        ];
     }
 }

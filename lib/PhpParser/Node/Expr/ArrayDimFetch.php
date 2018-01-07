@@ -3,8 +3,9 @@
 namespace PhpParser\Node\Expr;
 
 use PhpParser\Node\Expr;
+use PhpParser\Skripsi\IExtractable;
 
-class ArrayDimFetch extends Expr
+class ArrayDimFetch extends Expr implements IExtractable
 {
     /** @var Expr Variable */
     public $var;
@@ -26,5 +27,18 @@ class ArrayDimFetch extends Expr
 
     public function getSubNodeNames() {
         return array('var', 'dim');
+    }
+
+    public function extract()
+    {
+        $dim = $this->dim;
+        if($dim !== null) {
+            $dim = $dim->extract();
+        }
+        return [
+            'type' => $this->getType(),
+            'var' => $this->var->extract(),
+            'dim' => $dim
+        ];
     }
 }

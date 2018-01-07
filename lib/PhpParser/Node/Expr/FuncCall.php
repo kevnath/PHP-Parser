@@ -6,7 +6,7 @@ use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Skripsi\IExtractable;
 
-class FuncCall extends Expr
+class FuncCall extends Expr implements IExtractable
 {
     /** @var Node\Name|Expr Function name */
     public $name;
@@ -30,14 +30,19 @@ class FuncCall extends Expr
         return array('name', 'args');
     }
 
-    public function extract() {
+    private function extractArgs() {
         $args = [];
         foreach($this->args as $arg) {
             $args[] = $arg->extract();
         }
+        return $args;
+    }
+
+    public function extract() {
         return [
+            'type' => $this->getType(),
             'name' => $this->name->extract(),
-            'args' => $args
+            'args' => $this->extractArgs()
         ];
     }
 }

@@ -3,8 +3,9 @@
 namespace PhpParser\Node;
 
 use PhpParser\NodeAbstract;
+use PhpParser\Skripsi\IExtractable;
 
-class Name extends NodeAbstract
+class Name extends NodeAbstract implements IExtractable
 {
     /**
      * @var string[] Parts of the name
@@ -192,5 +193,10 @@ class Name extends NodeAbstract
         throw new \InvalidArgumentException(
             'Expected string, array of parts or Name instance'
         );
+    }
+
+    public function extract()
+    {
+        return $this->toString();
     }
 }

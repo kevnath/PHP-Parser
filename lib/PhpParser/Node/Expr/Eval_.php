@@ -3,8 +3,9 @@
 namespace PhpParser\Node\Expr;
 
 use PhpParser\Node\Expr;
+use PhpParser\Skripsi\IExtractable;
 
-class Eval_ extends Expr
+class Eval_ extends Expr implements IExtractable
 {
     /** @var Expr Expression */
     public $expr;
@@ -22,5 +23,13 @@ class Eval_ extends Expr
 
     public function getSubNodeNames() {
         return array('expr');
+    }
+
+    public function extract()
+    {
+        return [
+            'type' => $this->getType(),
+            'expr' => $this->expr->extract()
+        ];
     }
 }
