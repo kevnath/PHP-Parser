@@ -41,7 +41,9 @@ class For_ extends Node\Stmt implements IStatementExtractable, IConditionExtract
 
     public function getStatements()
     {
-        return $this->stmts;
+        return [
+            'stmts' => $this->stmts
+        ];
     }
 
     public function getCondition()

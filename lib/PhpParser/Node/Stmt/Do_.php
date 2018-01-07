@@ -32,7 +32,9 @@ class Do_ extends Node\Stmt implements IStatementExtractable, IConditionExtracta
 
     public function getStatements()
     {
-        return $this->stmts;
+        return [
+            'stmts' => $this->stmts
+        ];
     }
 
     public function getCondition()

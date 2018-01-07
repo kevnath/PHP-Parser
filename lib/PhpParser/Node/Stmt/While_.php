@@ -32,7 +32,9 @@ class While_ extends Node\Stmt implements IStatementExtractable, IConditionExtra
 
     public function getStatements()
     {
-        return $this->stmts;
+        return [
+            'stmts' => $this->stmts
+        ];
     }
 
     public function getCondition()

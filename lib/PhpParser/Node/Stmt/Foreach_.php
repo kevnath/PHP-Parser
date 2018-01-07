@@ -45,7 +45,9 @@ class Foreach_ extends Node\Stmt implements IStatementExtractable
 
     public function getStatements()
     {
-        return $this->stmts;
+        return [
+            'stmts' => $this->stmts
+        ];
     }
 
 }
