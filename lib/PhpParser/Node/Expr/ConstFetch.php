@@ -30,7 +30,7 @@ class ConstFetch extends Expr implements IExtractable
     {
         return [
             'type' => $this->getType(),
-            'name' => $this->name
+            'name' => $this->name->extract()
         ];
     }
 }
