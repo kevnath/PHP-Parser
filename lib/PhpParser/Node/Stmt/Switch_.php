@@ -3,9 +3,10 @@
 namespace PhpParser\Node\Stmt;
 
 use PhpParser\Node;
+use PhpParser\Skripsi\IConditionExtractable;
 use PhpParser\Skripsi\IStatementExtractable;
 
-class Switch_ extends Node\Stmt implements IStatementExtractable
+class Switch_ extends Node\Stmt implements IStatementExtractable, IConditionExtractable
 {
     /** @var Node\Expr Condition */
     public $cond;
@@ -36,5 +37,10 @@ class Switch_ extends Node\Stmt implements IStatementExtractable
             $casesStmts[] = $case->getStatements();
         }
         return $casesStmts;
+    }
+
+    public function getCondition()
+    {
+        return $this->cond;
     }
 }

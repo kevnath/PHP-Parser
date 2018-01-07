@@ -30,8 +30,8 @@ $result = $parser->parse(file_get_contents('testingcode.php'));
 
 $traverser = new \PhpParser\NodeTraverser();
 $traverser->addVisitor(new Mapper());
-$traverser->traverse($result);
+//$traverser->traverse($result);
 
-//echo '<pre>';
-//var_dump($result);
-//echo '</pre>';
+echo '<pre>';
+var_dump($result);
+echo '</pre>';

@@ -3,9 +3,10 @@
 namespace PhpParser\Node\Stmt;
 
 use PhpParser\Node;
+use PhpParser\Skripsi\IConditionExtractable;
 use PhpParser\Skripsi\IStatementExtractable;
 
-class For_ extends Node\Stmt implements IStatementExtractable
+class For_ extends Node\Stmt implements IStatementExtractable, IConditionExtractable
 {
     /** @var Node\Expr[] Init expressions */
     public $init;
@@ -41,5 +42,10 @@ class For_ extends Node\Stmt implements IStatementExtractable
     public function getStatements()
     {
         return $this->stmts;
+    }
+
+    public function getCondition()
+    {
+        return $this->cond;
     }
 }

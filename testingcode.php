@@ -1,3 +1,4 @@
 <?php
-
-$obj->met('aaa');
+foreach($a->aaa() as $aaaa) {
+    echo 'aaa';
+}

@@ -3,9 +3,10 @@
 namespace PhpParser\Node\Stmt;
 
 use PhpParser\Node;
+use PhpParser\Skripsi\IConditionExtractable;
 use PhpParser\Skripsi\IStatementExtractable;
 
-class If_ extends Node\Stmt implements IStatementExtractable
+class If_ extends Node\Stmt implements IStatementExtractable, IConditionExtractable
 {
     /** @var Node\Expr Condition expression */
     public $cond;
@@ -48,5 +49,10 @@ class If_ extends Node\Stmt implements IStatementExtractable
         }
         $stmts['else'] = $this->else === null ? null : $this->else->getStatements();
         return $stmts;
+    }
+
+    public function getCondition()
+    {
+        return $this->cond;
     }
 }

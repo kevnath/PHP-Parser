@@ -3,6 +3,7 @@
 namespace PhpParser\Node\Stmt;
 
 use PhpParser\Node;
+use PhpParser\Skripsi\IConditionExtractable;
 use PhpParser\Skripsi\IStatementExtractable;
 
 class Foreach_ extends Node\Stmt implements IStatementExtractable
@@ -46,4 +47,5 @@ class Foreach_ extends Node\Stmt implements IStatementExtractable
     {
         return $this->stmts;
     }
+
 }
