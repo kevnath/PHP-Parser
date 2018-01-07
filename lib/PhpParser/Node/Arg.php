@@ -3,8 +3,9 @@
 namespace PhpParser\Node;
 
 use PhpParser\NodeAbstract;
+use PhpParser\Skripsi\IExtractable;
 
-class Arg extends NodeAbstract
+class Arg extends NodeAbstract implements IExtractable
 {
     /** @var Expr Value to pass */
     public $value;
@@ -30,5 +31,11 @@ class Arg extends NodeAbstract
 
     public function getSubNodeNames() {
         return array('value', 'byRef', 'unpack');
+    }
+
+
+    public function extract()
+    {
+        return $this->value->extract();
     }
 }

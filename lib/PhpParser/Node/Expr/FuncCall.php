@@ -4,6 +4,7 @@ namespace PhpParser\Node\Expr;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr;
+use PhpParser\Skripsi\IExtractable;
 
 class FuncCall extends Expr
 {
@@ -30,8 +31,13 @@ class FuncCall extends Expr
     }
 
     public function extract() {
-        if($this->name instanceof Node\Name)
-            return $this->name->toString();
-        return $this->name->name;
+        $args = [];
+        foreach($this->args as $arg) {
+            $args[] = $arg->extract();
+        }
+        return [
+            'name' => $this->name->extract(),
+            'args' => $args
+        ];
     }
 }

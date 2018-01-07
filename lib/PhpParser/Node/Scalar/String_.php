@@ -4,8 +4,9 @@ namespace PhpParser\Node\Scalar;
 
 use PhpParser\Error;
 use PhpParser\Node\Scalar;
+use PhpParser\Skripsi\IExtractable;
 
-class String_ extends Scalar
+class String_ extends Scalar implements IExtractable
 {
     /* For use in "kind" attribute */
     const KIND_SINGLE_QUOTED = 1;
@@ -149,5 +150,10 @@ class String_ extends Scalar
         }
 
         return self::parseEscapeSequences($str, null, $parseUnicodeEscape);
+    }
+
+    public function extract()
+    {
+        return $this->value;
     }
 }
