@@ -29,7 +29,7 @@ class Eval_ extends Expr implements IExtractable
     {
         return [
             'type' => $this->getType(),
-            'expr' => $this->expr->extract()
+            'expr' => $this->expr
         ];
     }
 }
