@@ -3,8 +3,9 @@
 namespace PhpParser\Node\Expr;
 
 use PhpParser\Node\Expr;
+use PhpParser\Skripsi\IExtractable;
 
-class ErrorSuppress extends Expr
+class ErrorSuppress extends Expr implements IExtractable
 {
     /** @var Expr Expression */
     public $expr;
@@ -22,5 +23,10 @@ class ErrorSuppress extends Expr
 
     public function getSubNodeNames() {
         return array('expr');
+    }
+
+    public function extract()
+    {
+        return $this->expr;
     }
 }

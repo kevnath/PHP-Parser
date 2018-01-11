@@ -1,4 +1,2 @@
 <?php
-foreach($a->aaa() as $aaaa) {
-    echo 'aaa';
-}
+$a = '.'.set_time_limit(0);

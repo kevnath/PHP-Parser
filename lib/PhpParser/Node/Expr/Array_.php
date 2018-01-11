@@ -3,8 +3,9 @@
 namespace PhpParser\Node\Expr;
 
 use PhpParser\Node\Expr;
+use PhpParser\Skripsi\IExtractable;
 
-class Array_ extends Expr
+class Array_ extends Expr implements IExtractable
 {
     // For use in "kind" attribute
     const KIND_LONG = 1;  // array() syntax
@@ -26,5 +27,13 @@ class Array_ extends Expr
 
     public function getSubNodeNames() {
         return array('items');
+    }
+
+
+    public function extract()
+    {
+        return [
+            'type' => $this->getType()
+        ];
     }
 }

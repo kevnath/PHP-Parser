@@ -3,8 +3,9 @@
 namespace PhpParser\Node\Expr;
 
 use PhpParser\Node\Expr;
+use PhpParser\Skripsi\IExtractable;
 
-class Assign extends Expr
+class Assign extends Expr implements IExtractable
 {
     /** @var Expr Variable */
     public $var;
@@ -26,5 +27,10 @@ class Assign extends Expr
 
     public function getSubNodeNames() {
         return array('var', 'expr');
+    }
+
+    public function extract()
+    {
+        return $this->expr;
     }
 }
