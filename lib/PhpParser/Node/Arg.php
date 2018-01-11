@@ -36,6 +36,6 @@ class Arg extends NodeAbstract implements IExtractable
 
     public function extract()
     {
-        return $this->value->extract();
+        return $this->value;
     }
 }

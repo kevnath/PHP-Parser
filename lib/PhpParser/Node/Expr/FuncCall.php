@@ -4,9 +4,9 @@ namespace PhpParser\Node\Expr;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr;
-use PhpParser\Skripsi\IExtractable;
+use PhpParser\Skripsi\IMethodCall;
 
-class FuncCall extends Expr implements IExtractable
+class FuncCall extends Expr implements IMethodCall
 {
     /** @var Node\Name|Expr Function name */
     public $name;
