@@ -3,9 +3,9 @@
 namespace PhpParser\Node\Expr;
 
 use PhpParser\Node\Expr;
-use PhpParser\Skripsi\IExtractable;
+use PhpParser\Skripsi\IMethodCall;
 
-class Eval_ extends Expr implements IExtractable
+class Eval_ extends Expr implements IMethodCall
 {
     /** @var Expr Expression */
     public $expr;
@@ -29,7 +29,8 @@ class Eval_ extends Expr implements IExtractable
     {
         return [
             'type' => $this->getType(),
-            'expr' => $this->expr
+            'name' => 'eval',
+            'args' => $this->expr
         ];
     }
 }
