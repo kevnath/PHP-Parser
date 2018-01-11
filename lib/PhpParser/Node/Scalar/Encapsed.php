@@ -4,9 +4,9 @@ namespace PhpParser\Node\Scalar;
 
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
-use PhpParser\Skripsi\IExtractable;
+use PhpParser\Skripsi\IExprOnlyExtractable;
 
-class Encapsed extends Scalar implements IExtractable
+class Encapsed extends Scalar implements IExprOnlyExtractable
 {
     /** @var Expr[] list of string parts */
     public $parts;

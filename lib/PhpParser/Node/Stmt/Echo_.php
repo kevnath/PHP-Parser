@@ -3,9 +3,9 @@
 namespace PhpParser\Node\Stmt;
 
 use PhpParser\Node;
-use PhpParser\Skripsi\IExtractable;
+use PhpParser\Skripsi\IExprOnlyExtractable;
 
-class Echo_ extends Node\Stmt implements IExtractable
+class Echo_ extends Node\Stmt implements IExprOnlyExtractable
 {
     /** @var Node\Expr[] Expressions */
     public $exprs;
