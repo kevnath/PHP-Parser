@@ -33,6 +33,5 @@ abstract class MagicConst extends Scalar implements IExtractable
             'type' => $this->getType(),
             'name' => $this->getName()
         ];
-
     }
 }

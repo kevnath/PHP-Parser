@@ -3,13 +3,13 @@
  * Created by PhpStorm.
  * User: kevin
  * Date: 11/01/2018
- * Time: 14:27
+ * Time: 18:37
  */
 
 namespace PhpParser\Skripsi;
 
 
-interface IPartsExtractable extends IExtractable
+interface ILeftRightExtractable extends IExtractable
 {
 
 }

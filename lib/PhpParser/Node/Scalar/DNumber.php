@@ -3,8 +3,9 @@
 namespace PhpParser\Node\Scalar;
 
 use PhpParser\Node\Scalar;
+use PhpParser\Skripsi\IExtractable;
 
-class DNumber extends Scalar
+class DNumber extends Scalar implements IExtractable
 {
     /** @var float Number value */
     public $value;
@@ -60,5 +61,13 @@ class DNumber extends Scalar
 
         // dec
         return (float) $str;
+    }
+
+    public function extract()
+    {
+        return [
+            'type' => $this->getType(),
+            'value' => $this->value
+        ];
     }
 }

@@ -9,7 +9,7 @@
 namespace PhpParser\Skripsi;
 
 
-interface IMethodCall
+interface IMethodCall extends IExtractable
 {
-    public function extract();
+
 }

@@ -9,7 +9,7 @@
 namespace PhpParser\Skripsi;
 
 
-interface IExprOnlyExtractable
+interface IExprOnlyExtractable extends IExtractable
 {
-    public function extract();
+
 }
