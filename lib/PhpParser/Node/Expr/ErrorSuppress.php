@@ -3,9 +3,9 @@
 namespace PhpParser\Node\Expr;
 
 use PhpParser\Node\Expr;
-use PhpParser\Skripsi\IExtractable;
+use PhpParser\Skripsi\IExprOnlyExtractable;
 
-class ErrorSuppress extends Expr implements IExtractable
+class ErrorSuppress extends Expr implements IExprOnlyExtractable
 {
     /** @var Expr Expression */
     public $expr;
