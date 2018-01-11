@@ -3,8 +3,9 @@
 namespace PhpParser\Node\Scalar;
 
 use PhpParser\Node\Scalar;
+use PhpParser\Skripsi\IExtractable;
 
-class EncapsedStringPart extends Scalar
+class EncapsedStringPart extends Scalar implements IExtractable
 {
     /** @var string String value */
     public $value;
@@ -22,5 +23,13 @@ class EncapsedStringPart extends Scalar
 
     public function getSubNodeNames() {
         return array('value');
+    }
+
+    public function extract()
+    {
+        return [
+            'type' => $this->getType(),
+            'value' => $this->value
+        ];
     }
 }

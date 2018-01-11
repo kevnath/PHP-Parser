@@ -3,8 +3,9 @@
 namespace PhpParser\Node\Stmt;
 
 use PhpParser\Node;
+use PhpParser\Skripsi\IExtractable;
 
-class Echo_ extends Node\Stmt
+class Echo_ extends Node\Stmt implements IExtractable
 {
     /** @var Node\Expr[] Expressions */
     public $exprs;
@@ -22,5 +23,11 @@ class Echo_ extends Node\Stmt
 
     public function getSubNodeNames() {
         return array('exprs');
+    }
+
+
+    public function extract()
+    {
+        return $this->exprs;
     }
 }

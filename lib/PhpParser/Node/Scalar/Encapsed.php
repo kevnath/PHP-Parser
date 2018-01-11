@@ -4,8 +4,9 @@ namespace PhpParser\Node\Scalar;
 
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
+use PhpParser\Skripsi\IExtractable;
 
-class Encapsed extends Scalar
+class Encapsed extends Scalar implements IExtractable
 {
     /** @var Expr[] list of string parts */
     public $parts;
@@ -23,5 +24,10 @@ class Encapsed extends Scalar
 
     public function getSubNodeNames() {
         return array('parts');
+    }
+
+    public function extract()
+    {
+        return $this->parts;
     }
 }

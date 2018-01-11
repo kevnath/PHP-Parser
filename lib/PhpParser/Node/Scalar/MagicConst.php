@@ -3,8 +3,9 @@
 namespace PhpParser\Node\Scalar;
 
 use PhpParser\Node\Scalar;
+use PhpParser\Skripsi\IExtractable;
 
-abstract class MagicConst extends Scalar
+abstract class MagicConst extends Scalar implements IExtractable
 {
     /**
      * Constructs a magic constant node.
@@ -25,4 +26,13 @@ abstract class MagicConst extends Scalar
      * @return string Name of magic constant
      */
     abstract public function getName();
+
+    public function extract()
+    {
+        return [
+            'type' => $this->getType(),
+            'name' => $this->getName()
+        ];
+
+    }
 }

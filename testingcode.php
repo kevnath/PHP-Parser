@@ -1,2 +1,2 @@
 <?php
-$a = 5 + 5;
+echo "acb $abc";

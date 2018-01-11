@@ -4,8 +4,9 @@ namespace PhpParser\Node\Scalar;
 
 use PhpParser\Error;
 use PhpParser\Node\Scalar;
+use PhpParser\Skripsi\IExtractable;
 
-class LNumber extends Scalar
+class LNumber extends Scalar implements IExtractable
 {
     /* For use in "kind" attribute */
     const KIND_BIN = 2;
@@ -63,5 +64,10 @@ class LNumber extends Scalar
         // use intval instead of octdec to get proper cutting behavior with malformed numbers
         $attributes['kind'] = LNumber::KIND_OCT;
         return new LNumber(intval($str, 8), $attributes);
+    }
+
+    public function extract()
+    {
+        return $this->value;
     }
 }
