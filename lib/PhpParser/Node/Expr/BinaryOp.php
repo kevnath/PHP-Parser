@@ -3,8 +3,9 @@
 namespace PhpParser\Node\Expr;
 
 use PhpParser\Node\Expr;
+use PhpParser\Skripsi\ILeftRightExtractable;
 
-abstract class BinaryOp extends Expr
+abstract class BinaryOp extends Expr implements ILeftRightExtractable
 {
     /** @var Expr The left hand side expression */
     public $left;
@@ -26,5 +27,14 @@ abstract class BinaryOp extends Expr
 
     public function getSubNodeNames() {
         return array('left', 'right');
+    }
+
+    public function extract()
+    {
+        return [
+            'type' => $this->getType(),
+            'left' => $this->left,
+            'right' => $this->right
+        ];
     }
 }
