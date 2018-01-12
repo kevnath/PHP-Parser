@@ -45,9 +45,9 @@ class If_ extends Node\Stmt implements IStatementExtractable, IConditionExtracta
         $stmts['stmts'] = $this->stmts;
         $stmts['elseifs'] = array();
         foreach($this->elseifs as $elseif) {
-            $stmts['elseifs'][] = $elseif->getStatements();
+            $stmts['elseifs'][] = $elseif;
         }
-        $stmts['else'] = $this->else === null ? null : $this->else->getStatements();
+        $stmts['else'] = $this->else === null ? null : $this->else;
         return $stmts;
     }
 

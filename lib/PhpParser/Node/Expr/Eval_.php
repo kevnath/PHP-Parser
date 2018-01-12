@@ -30,7 +30,9 @@ class Eval_ extends Expr implements IMethodCall
         return [
             'type' => $this->getType(),
             'name' => 'eval',
-            'args' => $this->expr
+            'args' => [
+                $this->expr
+            ]
         ];
     }
 }

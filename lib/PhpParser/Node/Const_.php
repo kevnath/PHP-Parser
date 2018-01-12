@@ -3,8 +3,9 @@
 namespace PhpParser\Node;
 
 use PhpParser\NodeAbstract;
+use PhpParser\Skripsi\IExtractable;
 
-class Const_ extends NodeAbstract
+class Const_ extends NodeAbstract implements IExtractable
 {
     /** @var string Name */
     public $name;
@@ -26,5 +27,14 @@ class Const_ extends NodeAbstract
 
     public function getSubNodeNames() {
         return array('name', 'value');
+    }
+
+    public function extract()
+    {
+        return [
+            'type' => $this->getType(),
+            'name' => $this->name,
+            'value' => $this->value
+        ];
     }
 }
