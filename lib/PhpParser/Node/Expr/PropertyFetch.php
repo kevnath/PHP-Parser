@@ -3,8 +3,9 @@
 namespace PhpParser\Node\Expr;
 
 use PhpParser\Node\Expr;
+use PhpParser\Skripsi\IExtractable;
 
-class PropertyFetch extends Expr
+class PropertyFetch extends Expr implements IExtractable
 {
     /** @var Expr Variable holding object */
     public $var;
@@ -26,5 +27,14 @@ class PropertyFetch extends Expr
 
     public function getSubNodeNames() {
         return array('var', 'name');
+    }
+
+
+    public function extract()
+    {
+        return [
+            'var' => $this->var,
+            'name' => $this->name
+        ];
     }
 }

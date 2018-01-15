@@ -3,8 +3,9 @@
 namespace PhpParser\Node\Stmt;
 
 use PhpParser\Node;
+use PhpParser\Skripsi\IStatementExtractable;
 
-class Trait_ extends ClassLike
+class Trait_ extends ClassLike implements IStatementExtractable
 {
     /**
      * Constructs a trait node.
@@ -22,5 +23,15 @@ class Trait_ extends ClassLike
 
     public function getSubNodeNames() {
         return array('name', 'stmts');
+    }
+
+    public function getStatements()
+    {
+        $stmts = array();
+        foreach($this->stmts as $stmt) {
+            if($stmt instanceof IStatementExtractable)
+                $stmts[] = $stmt->getStatements();
+        }
+        return $stmts;
     }
 }
