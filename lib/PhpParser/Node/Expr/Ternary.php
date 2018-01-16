@@ -3,8 +3,10 @@
 namespace PhpParser\Node\Expr;
 
 use PhpParser\Node\Expr;
+use PhpParser\Skripsi\IConditionExtractable;
+use PhpParser\Skripsi\IStatementExtractable;
 
-class Ternary extends Expr
+class Ternary extends Expr implements IConditionExtractable, IStatementExtractable
 {
     /** @var Expr Condition */
     public $cond;
@@ -30,5 +32,18 @@ class Ternary extends Expr
 
     public function getSubNodeNames() {
         return array('cond', 'if', 'else');
+    }
+
+    public function getCondition()
+    {
+        return $this->cond;
+    }
+
+    public function getStatements()
+    {
+        return [
+            'if' => $this->if,
+            'else' => $this->else
+        ];
     }
 }
