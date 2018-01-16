@@ -4,8 +4,9 @@ namespace PhpParser\Node\Expr;
 
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
+use PhpParser\Skripsi\IExtractable;
 
-class ClassConstFetch extends Expr
+class ClassConstFetch extends Expr implements IExtractable
 {
     /** @var Name|Expr Class name */
     public $class;
@@ -27,5 +28,14 @@ class ClassConstFetch extends Expr
 
     public function getSubNodeNames() {
         return array('class', 'name');
+    }
+
+    public function extract()
+    {
+        return [
+            'type' => $this->getType(),
+            'class' => $this->class,
+            'value' => $this->name
+        ];
     }
 }
