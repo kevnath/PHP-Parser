@@ -33,6 +33,7 @@ class PropertyFetch extends Expr implements IExtractable
     public function extract()
     {
         return [
+            'type' => $this->getType(),
             'var' => $this->var,
             'name' => $this->name
         ];
