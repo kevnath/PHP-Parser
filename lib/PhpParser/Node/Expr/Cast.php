@@ -3,8 +3,9 @@
 namespace PhpParser\Node\Expr;
 
 use PhpParser\Node\Expr;
+use PhpParser\Skripsi\IExprOnlyExtractable;
 
-abstract class Cast extends Expr
+abstract class Cast extends Expr implements IExprOnlyExtractable
 {
     /** @var Expr Expression */
     public $expr;
@@ -22,5 +23,10 @@ abstract class Cast extends Expr
 
     public function getSubNodeNames() {
         return array('expr');
+    }
+
+    public function extract()
+    {
+        return $this->expr;
     }
 }
