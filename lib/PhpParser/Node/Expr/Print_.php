@@ -3,8 +3,9 @@
 namespace PhpParser\Node\Expr;
 
 use PhpParser\Node\Expr;
+use PhpParser\Skripsi\IExprOnlyExtractable;
 
-class Print_ extends Expr
+class Print_ extends Expr implements IExprOnlyExtractable
 {
     /** @var Expr Expression */
     public $expr;
@@ -22,5 +23,10 @@ class Print_ extends Expr
 
     public function getSubNodeNames() {
         return array('expr');
+    }
+
+    public function extract()
+    {
+        return $this->expr;
     }
 }
